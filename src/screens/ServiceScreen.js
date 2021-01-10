@@ -1,7 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { SafeAreaView, StatusBar, View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
-import { useEffect } from "react/cjs/react.development";
 import { services, languageApi, logOut } from "../redux/action/action-creater";
 
 
