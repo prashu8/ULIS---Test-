@@ -1,24 +1,24 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import ProductScreen from '../screens/Products';
 import { NavigationContainer } from '@react-navigation/native';
-import  LoginScreen  from '../screens/LoginScreen';
+import LoginScreen from '../screens/LoginScreen';
+import ServiceScreen from '../screens/ServiceScreen';
+
 
 
 const Stack = createStackNavigator();
 
 
 
-const AppNav = () => {
+export default function AppNav(props) {
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerTitleAlign: 'center' }} initialRouteName={"Login"}>
-                <Stack.Screen name="Products" component={ProductScreen} />
-                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Login" component={LoginScreen}
+                    options={{ headerShown: false }} />
+                <Stack.Screen name="Service" component={ServiceScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
 };
 
-
-export default AppNav;
