@@ -30,7 +30,7 @@ const ServiceScreen = ({ navigation, services, allServices, languageApi, languag
 
     return (
         <>
-            <StatusBar barStyle="dark-content"/>
+            <StatusBar barStyle="dark-content" />
             <SafeAreaView style={styles.safeArea}>
                 <View style={styles.constainer}>
 
