@@ -8,6 +8,7 @@ import { login } from "../redux/action/action-creater";
 import qs from 'qs'
 import Toast from 'react-native-simple-toast';
 import { ActivityIndicator } from "react-native-paper";
+import { AuthContext } from '../context/index';
 
 
 
@@ -16,6 +17,10 @@ const EMAIL_FORMAT = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+
 
 
 const LoginScreen = ({ navigation, login, userData, isLoading }) => {
+
+
+    const { signIn } = React.useContext(AuthContext);
+
 
     const [email, setEmail] = useState('');
     const [psd, setPsd] = useState('');
@@ -29,9 +34,9 @@ const LoginScreen = ({ navigation, login, userData, isLoading }) => {
     }
 
     // if user is alredy logged in then no need to login again it directly redirect to next page
-    if (userData != "") {
-        navigation.replace('Service');
-    }
+    // if (userData != "") {
+    //     navigation.replace('Service');
+    // }
 
 
     // funciton on click on login button
@@ -48,6 +53,7 @@ const LoginScreen = ({ navigation, login, userData, isLoading }) => {
                         console.log("LoginScreen Response ==>", res);
                         if (res.loginSuccess) {
                             // navigation.replace('Products');
+                            signIn();
                             if (res.data.message == "Login Success") {
                                 Toast.show("Login Successfully");
                             }
@@ -65,7 +71,7 @@ const LoginScreen = ({ navigation, login, userData, isLoading }) => {
 
     return (
         <>
-            <StatusBar barStyle="dark-content"/>
+            <StatusBar barStyle="dark-content" />
             <SafeAreaView style={styles.safeArea}>
 
                 {/* This is for hide keyboard after click on screen */}

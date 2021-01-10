@@ -1,7 +1,8 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView, StatusBar, View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { services, languageApi, logOut } from "../redux/action/action-creater";
+import { AuthContext } from '../context/index';
 
 
 const ServiceScreen = ({ navigation, services, allServices, languageApi, languages, logOut }) => {
@@ -12,6 +13,7 @@ const ServiceScreen = ({ navigation, services, allServices, languageApi, languag
         languageApi();
     }, []);
 
+    const { signOut } = React.useContext(AuthContext);
 
 
 
@@ -20,12 +22,9 @@ const ServiceScreen = ({ navigation, services, allServices, languageApi, languag
         logOut()
             .then((res) => {
                 console.log("res", res);
-                if (res.logout) {
-                    navigation.replace('Login');
-                }
             })
+        signOut();
     }
-
 
     return (
         <>
